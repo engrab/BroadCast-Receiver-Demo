@@ -19,5 +19,8 @@ public class MyReceiver extends BroadcastReceiver {
                 Toast.makeText(context, "Disconnectivity", Toast.LENGTH_SHORT).show();
             }
         }
+        else if (Intent.ACTION_TIME_TICK.equals(intent.getAction())){
+            Toast.makeText(context, "Time is incremented", Toast.LENGTH_SHORT).show();
+        }
     }
 }
