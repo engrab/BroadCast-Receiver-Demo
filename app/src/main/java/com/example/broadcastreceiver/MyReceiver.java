@@ -11,11 +11,13 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())){
-            Toast.makeText(context, "Boot Compeleted", Toast.LENGTH_LONG).show();
-        }
-        else if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())){
-            Toast.makeText(context, "connectivity changed", Toast.LENGTH_SHORT).show();
+        if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
+            boolean booleanExtra = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+            if (!booleanExtra) {
+                Toast.makeText(context, "connected", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Disconnectivity", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
